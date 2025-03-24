@@ -1,4 +1,45 @@
 import course1 from "./images/course1.jpg";
+import courses from "./data/courses.js"
+
+
+function FeaturedCourses() {
+    let uniqueRandomCourses = [];
+    console.log(uniqueRandomCourses);
+    
+    for (let i = 0; i < 3; i++) {
+        let notDone = true;
+        let newCourse;
+        while (notDone) {
+            newCourse = courses[Math.random() * courses.length];
+            if (uniqueRandomCourses.includes(newCourse))
+                continue;
+            notDone = false;
+        }
+        uniqueRandomCourses.push(newCourse);
+    }
+    //uniqueRandomCourses.push(courses[1]);
+
+    return (
+        <div>
+            <h2>Featured Courses</h2>
+            {uniqueRandomCourses.map(function (course) {
+                return (
+                    <div>
+                        <p>{course.id}</p>
+                    </div>
+                );
+            })}
+        </div>
+    );
+}
+        //<td id="course_tile1" onmouseover="highlightTile('course_tile1')" onmouseout="unhighlightTile('course_tile1')">
+		//				<div>
+        //                    <img src="course1.jpg" alt="Course 1">
+        //                    <p>Course Name: Web Development</p>
+        //                    <p>Course Code: WD381</p>
+        //                    <a href="attempt_quiz.html">Attempt Quiz</a>
+        //                </div>
+		//			</td>
 
 function MainSection() {
     return (
@@ -19,50 +60,7 @@ function MainSection() {
                     </div>
                 </section>
             </main>
-            <section class="Enrolled">
-                <h2>Featured Courses</h2>
-                <hr />
-                <table class="cv" id="table1">
-                    <tr>
-                        <td
-                            id="course_tile1"
-                            onmouseover="highlightTile('course_tile1')"
-                            onmouseout="unhighlightTile('course_tile1')"
-                        >
-                            <div>
-                                <img src={course1} alt="Course 1" />
-                                <p>Course Name: Web Development</p>
-                                <p>Course Code: WD381</p>
-                                <a href="attempt_quiz.html">Attempt Quiz</a>
-                            </div>
-                        </td>
-                        <td
-                            id="course_tile2"
-                            onmouseover="highlightTile('course_tile2')"
-                            onmouseout="unhighlightTile('course_tile2')"
-                        >
-                            <div>
-                                <img src={course1} alt="Course 1" />
-                                <p>Course Name: Data Structures</p>
-                                <p>Course Code: DS371</p>
-                                <a href="attempt_quiz.html">Attempt Quiz</a>
-                            </div>
-                        </td>
-                        <td
-                            id="course_tile3"
-                            onmouseover="highlightTile('course_tile3')"
-                            onmouseout="unhighlightTile('course_tile3')"
-                        >
-                            <div>
-                                <img src={course1} alt="Course 1" />
-                                <p>Course Name: Database Systems</p>
-                                <p>Course Code: DB346</p>
-                                <a href="attempt_quiz.html">Attempt Quiz</a>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
-            </section>
+            <FeaturedCourses />    
         </div>
     );
 }
