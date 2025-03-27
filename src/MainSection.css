@@ -1,0 +1,27 @@
+main {
+    padding: 20px;
+    text-align: center;
+    align-items: center;
+
+    margin: 20px auto;
+    max-width: 90%;
+}
+
+table {
+    margin-top: 20px;
+    width: 100%;
+}
+
+table td {
+    text-align: center;
+    padding: 20px;
+    margin: 0 15px 10px 0;
+    background-color: #e6f2ff;
+    border-radius: 10px;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+table td img {
+    width: 100%;
+    border-radius: 5px;
+}
