@@ -1,0 +1,64 @@
+div[class="courseCatalog"] {
+    text-align: center;
+}
+
+table[class="courseCatalog"] {
+    margin-top: 20px;
+    width: 100%;
+}
+
+table[class="courseCatalog"] td {
+    text-align: center;
+    padding: 20px;
+    margin: 0 15px 10px 0;
+    background-color: #e6f2ff;
+    border-radius: 10px;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+table[class="courseCatalog"] td img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+table[class="courseCatalog"] button {
+    background-color: #008000;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+/* Course Description Ids */
+#1 {
+    display:none;  
+}
+#2 {
+    display:none;  
+}
+#3 {
+    display:none;  
+}
+#4 {
+    display:none;  
+}
+#5 {
+    display:none;  
+}
+#6 {
+    display:none;  
+}
+#7 {
+    display:none;  
+}
+#8 {
+    display:none;  
+}
+#9 {
+    display:none;  
+}
+#10 {
+    display:none;  
+}
