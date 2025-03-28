@@ -2,43 +2,37 @@ import courses from "./data/courses.js"
 import "./CourseCatalog.css";
 import React, { useState } from 'react';
 
-
-function showDescription(showDesc, id) {
-    if(showDesc == true) {
-        document.getElementById(id).style.display = 'none';
+function IncrementEnrollmentCount(id) {
+    let enrollCount = localStorage.getItem(id);
+    console.log(enrollCount);
+    if(enrollCount == null) {
+        localStorage.setItem(id, 1);
+        window.dispatchEvent(new Event("storage"));
     }
     else {
-        document.getElementById(id).style.display = 'block';
+        localStorage.setItem(id, parseInt(enrollCount) + 1);
+        window.dispatchEvent(new Event("storage"));
     }
 }
 
 function CourseItem(props) {
     const [showDesc, setShowDesc] = useState(false);
-    const handleMouseEnter = () => {
-        setShowDesc(true);
-        showDescription(showDesc, props.id);
-    };
-
-    const handleMouseLeave = () => {
-        setShowDesc(false);
-        showDescription(showDesc, props.id);
-    };
-
+    
     return (
-        <td onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+        <td onMouseEnter={() => setShowDesc(true)} onMouseLeave={() => setShowDesc(false)}>
             <img src={require("/" + props.image)} alt="missing image"></img>
             <p>Course Name: {props.name}</p>
             <p>Instructor: {props.instructor}</p>
-            <p className="description" id={props.id}>Description: {props.description}</p>
-            <button>Enroll Now</button>
+            {showDesc ? <p>Description: {props.description}</p> : null}
+            <button onClick={() => IncrementEnrollmentCount(props.id)}>Enroll Now</button>
         </td>
     );
 }
 
-// make hover better, not hard coded
 // need to assign course id as td's id
-// need to be able to show course description on hover using td's id somehow while also using useState
-// 
+// need to increment enrollment count of course when clicking on Enroll Now and check if id matches key
+// then somehow EnrollmentList should display whatever course is used in EnrolledCourse
+// initialize local storage in EnrollmentCourse by setting each course a value of 0 if null
 
 function CourseCatalog() {
     let courseGroup = [[], [], [], []];

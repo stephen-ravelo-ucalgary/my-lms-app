@@ -1,16 +1,10 @@
-div[class="courseCatalog"] {
+div[class="enrollmentList"] {
     text-align: center;
     color: #004080;
 }
 
-table[class="courseCatalog"] {
-    margin-top: 20px;
-    width: 100%;
+div [class="enrollmentList"] div {
     color: #000000;
-
-}
-
-table[class="courseCatalog"] td {
     text-align: center;
     padding: 20px;
     margin: 0 15px 10px 0;
@@ -19,13 +13,8 @@ table[class="courseCatalog"] td {
     box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.1);
 }
 
-table[class="courseCatalog"] td img {
-    width: 100%;
-    border-radius: 5px;
-}
-
-table[class="courseCatalog"] button {
-    background-color: #008000;
+div[class="enrollmentList"] button {
+    background-color: #821b1b;
     color: white;
     padding: 10px 15px;
     border: none;
