@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 
 function IncrementEnrollmentCount(id) {
     let enrollCount = localStorage.getItem(id);
-    console.log(enrollCount);
     if(enrollCount == null) {
         localStorage.setItem(id, 1);
         window.dispatchEvent(new Event("storage"));
@@ -28,11 +27,6 @@ function CourseItem(props) {
         </td>
     );
 }
-
-// need to assign course id as td's id
-// need to increment enrollment count of course when clicking on Enroll Now and check if id matches key
-// then somehow EnrollmentList should display whatever course is used in EnrolledCourse
-// initialize local storage in EnrollmentCourse by setting each course a value of 0 if null
 
 function CourseCatalog() {
     let courseGroup = [[], [], [], []];

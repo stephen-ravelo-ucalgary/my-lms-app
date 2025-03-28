@@ -1,7 +1,15 @@
-// imports
 import "./EnrollmentList.css";
 import courses from "./data/courses.js";
 import React, {useState, useEffect} from 'react';
+
+
+function DecrementEnrollmentCount(id) {
+    let enrollCount = localStorage.getItem(id);
+    if(enrollCount != null) {
+        localStorage.setItem(id, parseInt(enrollCount) - 1);
+        window.dispatchEvent(new Event("storage"));
+    }
+}
 
 
 function EnrolledCourse(props) {
@@ -14,7 +22,7 @@ function EnrolledCourse(props) {
         <div className="enrolledCourse">
             <p>Course Name: {courseName}</p>
             <p>Credit Hours: {duration}</p>
-            <button>Drop Course</button>
+            <button onClick={() => DecrementEnrollmentCount(props.id)}>Drop Course</button>
         </div>
     );
 }
@@ -31,11 +39,12 @@ function EnrollmentList() {
     const [count8, setCount8] = useState(localStorage.getItem(8));
     const [count9, setCount9] = useState(localStorage.getItem(9));
     const [count10, setCount10] = useState(localStorage.getItem(10));
+    const [totalHours, setTotalHours] = useState(document.getElementsByClassName("enrolledCourse").length * 3);
 
     // when values are updated
-    useEffect(() => {
+    // useEffect(() => {
 
-    }, [count1, count2, count3, count4, count5, count6, count7, count8, count9, count10]);
+    // }, [count1, count2, count3, count4, count5, count6, count7, count8, count9, count10]);
 
     window.addEventListener("storage", () => {
         setCount1(localStorage.getItem(1));
@@ -48,16 +57,35 @@ function EnrollmentList() {
         setCount8(localStorage.getItem(8));
         setCount9(localStorage.getItem(9));
         setCount10(localStorage.getItem(10));
-
+        setTotalHours(SetTotalHours);
     });
 
-    // maybe have the ternary operator in the return instead?
-    // so that only the courses with > 0 enrollment count get displayed
-
-    // new problem, clicking enroll now doesnt update the enrolled courses part of the page
     // might need to use useEffect somehow to detect a change in one of the counts
-    // new problem, how do i get this file to update its count values
-    // when you click on enroll now in the other file
+
+    function SetTotalHours() {
+        // setTotalHours(document.getElementsByClassName("enrolledCourse").length * 3);
+        // return (
+        //     <div>Total Credit Hours: {totalHours}</div>
+        // )
+        // setTotalHours(0);
+        let hours = 0;
+        for(let i = 1; i < 11; i++) {
+            if(parseInt(localStorage.getItem(i)) != 0 && localStorage.getItem(i) != null) {
+                // setTotalHours(totalHours + parseInt(courses[i - 1]["duration"]));
+                hours += (totalHours + parseInt(courses[i - 1]["duration"]));
+                console.log(hours);
+                console.log("hello");
+            }
+        }
+        return hours;
+    }
+
+    function DisplayTotalHours() {
+        return (
+            <div>Total Credit Hours: {totalHours}</div>
+        );
+    }
+
     return (
         <div className="enrollmentList">
             <h2>Enrolled Courses</h2>
@@ -73,7 +101,7 @@ function EnrollmentList() {
             {parseInt(count8) == 0 || count8 == null ? null : <EnrolledCourse id={8} />}
             {parseInt(count9) == 0 || count9 == null ? null : <EnrolledCourse id={9} />}
             {parseInt(count10) == 0 || count10 == null ? null : <EnrolledCourse id={10} />}
-
+            <DisplayTotalHours />
             <br></br>
         </div>
     );

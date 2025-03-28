@@ -4,7 +4,7 @@ const courses = [
         name: "Web Development",
         instructor: "Dr. John Smith",
         description: "Master HTML, CSS, and JavaScript.",
-        duration: "8 weeks",
+        duration: "3",
         image: "images/course1.jpg",
     },
     {
@@ -12,7 +12,7 @@ const courses = [
         name: "Data Structures",
         instructor: "Instructor 2",
         description: "Description 2",
-        duration: "Duration 2",
+        duration: "3",
         image: "images/course1.jpg",
     },
     {
@@ -20,7 +20,7 @@ const courses = [
         name: "Database Systems",
         instructor: "Instructor 3",
         description: "Description 3",
-        duration: "Duration 3",
+        duration: "3",
         image: "images/course1.jpg",
     },
     {
@@ -28,7 +28,7 @@ const courses = [
         name: "Software Testing",
         instructor: "Instructor 4",
         description: "Description 4",
-        duration: "Duration 4",
+        duration: "3",
         image: "images/course1.jpg",
     },
     {
@@ -36,7 +36,7 @@ const courses = [
         name: "Software Architectures",
         instructor: "Instructor 5",
         description: "Description 5",
-        duration: "Duration 5",
+        duration: "3",
         image: "images/course1.jpg",
     },
     {
@@ -44,7 +44,7 @@ const courses = [
         name: "Data Science",
         instructor: "Instructor 6",
         description: "Description 6",
-        duration: "Duration 6",
+        duration: "3",
         image: "images/course2.jpg",
     },
     {
@@ -52,7 +52,7 @@ const courses = [
         name: "Machine Learning",
         instructor: "Instructor 7",
         description: "Description 7",
-        duration: "Duration 7",
+        duration: "3",
         image: "images/course2.jpg",
     },
     {
@@ -60,7 +60,7 @@ const courses = [
         name: "Object-oriented Programming",
         instructor: "Instructor 8",
         description: "Description 8",
-        duration: "Duration 8",
+        duration: "3",
         image: "images/course2.jpg",
     },
     {
@@ -68,7 +68,7 @@ const courses = [
         name: "Programming Fundamentals",
         instructor: "Instructor 9",
         description: "Description 9",
-        duration: "Duration 9",
+        duration: "3",
         image: "images/course2.jpg",
     },
     {
@@ -76,7 +76,7 @@ const courses = [
         name: "Computer Organization",
         instructor: "Instructor 10",
         description: "Description 10",
-        duration: "Duration 10",
+        duration: "3",
         image: "images/course2.jpg",
     },
 ];
