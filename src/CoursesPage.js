@@ -1,8 +1,7 @@
 import Header from "./Header.js"
 import EnrollmentList from "./EnrollmentList.js"
 import CourseCatalog from "./CourseCatalog.js"
-// import Footer from "./Footer.js"
-
+import Footer from "./Footer.js"
 
 function CoursesPage() {
     return (
@@ -12,7 +11,7 @@ function CoursesPage() {
                 <CourseCatalog />
                 <EnrollmentList />
             </div>
-            {/* <Footer /> */}
+            <Footer />
         </div>
     );
 }

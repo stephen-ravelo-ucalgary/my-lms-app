@@ -2,7 +2,6 @@ import "./EnrollmentList.css";
 import courses from "./data/courses.js";
 import React, {useState, useEffect} from 'react';
 
-
 function DecrementEnrollmentCount(id) {
     let enrollCount = localStorage.getItem(id);
     if(enrollCount != null) {
@@ -11,11 +10,7 @@ function DecrementEnrollmentCount(id) {
     }
 }
 
-
 function EnrolledCourse(props) {
-    // const [count, setCount] = useState(null);
-    // iterate through courses then only dispaly if its value is greater than 0
-
     let courseName = courses[props.id - 1]["name"];
     let duration = courses[props.id - 1]["duration"];
     return (
@@ -39,12 +34,11 @@ function EnrollmentList() {
     const [count8, setCount8] = useState(localStorage.getItem(8));
     const [count9, setCount9] = useState(localStorage.getItem(9));
     const [count10, setCount10] = useState(localStorage.getItem(10));
-    const [totalHours, setTotalHours] = useState(document.getElementsByClassName("enrolledCourse").length * 3);
+    const [hours, setHours] = useState(null);
 
-    // when values are updated
-    // useEffect(() => {
-
-    // }, [count1, count2, count3, count4, count5, count6, count7, count8, count9, count10]);
+    useEffect(() => {
+        SetTotalHours();
+    }, []);
 
     window.addEventListener("storage", () => {
         setCount1(localStorage.getItem(1));
@@ -57,33 +51,18 @@ function EnrollmentList() {
         setCount8(localStorage.getItem(8));
         setCount9(localStorage.getItem(9));
         setCount10(localStorage.getItem(10));
-        setTotalHours(SetTotalHours);
+        SetTotalHours();
     });
 
-    // might need to use useEffect somehow to detect a change in one of the counts
-
     function SetTotalHours() {
-        // setTotalHours(document.getElementsByClassName("enrolledCourse").length * 3);
-        // return (
-        //     <div>Total Credit Hours: {totalHours}</div>
-        // )
-        // setTotalHours(0);
-        let hours = 0;
+        setHours(0);
+        var totalHours = 0;
         for(let i = 1; i < 11; i++) {
             if(parseInt(localStorage.getItem(i)) != 0 && localStorage.getItem(i) != null) {
-                // setTotalHours(totalHours + parseInt(courses[i - 1]["duration"]));
-                hours += (totalHours + parseInt(courses[i - 1]["duration"]));
-                console.log(hours);
-                console.log("hello");
+                totalHours += parseInt(courses[i - 1]["duration"]);
             }
         }
-        return hours;
-    }
-
-    function DisplayTotalHours() {
-        return (
-            <div>Total Credit Hours: {totalHours}</div>
-        );
+        setHours(totalHours);
     }
 
     return (
@@ -101,7 +80,7 @@ function EnrollmentList() {
             {parseInt(count8) == 0 || count8 == null ? null : <EnrolledCourse id={8} />}
             {parseInt(count9) == 0 || count9 == null ? null : <EnrolledCourse id={9} />}
             {parseInt(count10) == 0 || count10 == null ? null : <EnrolledCourse id={10} />}
-            <DisplayTotalHours />
+            <div>Total Credit Hours: {hours}</div>
             <br></br>
         </div>
     );
